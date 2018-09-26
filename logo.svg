@@ -2,7 +2,7 @@
     <defs>
         <style>
             svg{
-                animation: r 1s linear infinite;
+                animation: r 0.5s linear infinite;
             }
             @keyframes r{
                 0%{
