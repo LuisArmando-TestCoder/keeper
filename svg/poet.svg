@@ -1,0 +1,28 @@
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 179.63 194.25">
+    <defs>
+        <style>
+            .cls-1,
+            .cls-2 {
+                fill: none;
+                stroke-miterlimit: 10;
+            }
+
+            .cls-1 {
+                stroke: #aa0000;
+                stroke-width: 5px;
+            }
+
+            .cls-2 {
+                stroke: #fff;
+                stroke-width: 10px;
+            }
+
+        </style>
+    </defs>
+    <title>poet</title>
+    <path class="cls-1" d="M396.5,463.5s148,19,149-35,0-155,0-155" transform="translate(-396.37 -273.49)" />
+    <circle class="cls-2" cx="145.63" cy="94.51" r="31.5" />
+    <circle class="cls-1" cx="145.63" cy="94.51" r="31.5" />
+    <circle class="cls-1" cx="65.63" cy="94.51" r="31.5" />
+    <line class="cls-1" x1="97.13" y1="94.01" x2="114.13" y2="94.01" />
+</svg>
