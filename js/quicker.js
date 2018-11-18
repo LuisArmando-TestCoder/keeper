@@ -10,3 +10,6 @@ function gc(param) {
 function gi(param) {
   return document.getElementById(param);
 }
+function r(min, max){
+  return parseInt(Math.random()*((max+1)-min)+min);
+}
