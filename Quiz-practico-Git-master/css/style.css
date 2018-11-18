@@ -1,0 +1,123 @@
+*{
+    margin: 0;
+  }
+  .hero_banner{
+    position: relative;
+    background-image: url('http://puntarenas.com/wp-content/uploads/2014/10/puntarenas-view.jpg');
+    background-attachment: fixed;
+    background-size: cover;
+  }
+  .gradient_top_transp_black{
+    height: 700px;
+    background: -webkit-linear-gradient(top, transparent, #f4f4f4);
+    background: linear-gradient(top, transparent, #f4f4f4);
+  }
+  h1, h2{
+    text-align: center;
+    color: #f0f0f0;
+    font-family: 'Montserrat', sans-serif;
+    text-shadow: 0px 1px 10px black;
+  }
+  h1{
+    font-size: 11vw;
+    padding-top: 200px;
+  }
+  h2{
+    font-size: 2vw;
+  }
+  .content{
+    background: -webkit-linear-gradient(top, #f4f4f4, transparent);
+    background: linear-gradient(top, #f4f4f4, transparent);
+  }
+  .gallery{
+    padding-top: 300px;
+    padding-bottom: 100px;
+    height: 500px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 0px;
+  }
+  .put_img_here_1{
+    background-image: url('https://i.pinimg.com/originals/00/62/92/00629216c54c86d939f94a8c999438ca.jpg');
+  }
+  .put_img_here_2{
+    background-image: url('http://www.hiltonhotels.com/assets/img/Hotel%20Images/DoubleTree/J/JAPCRDT/JAPCRDT_gallery_hero01.jpg');
+  }
+  .put_img_here_3{
+    background-image: url('http://www.costaricavacation4me.com/vacations/wp-content/uploads/2012/07/barcelo-tambor.jpg');
+  }
+  .put{
+    position: relative;
+    margin: auto;
+    width: 100%;
+    height: 400px;
+    background-size: cover;
+    opacity: 1;
+    transition: 0.4s;
+    background-position: center;
+  }
+  .put:hover{
+    cursor: pointer;
+    opacity: 0.8;
+  }
+  .footer{
+    height: 170px;
+    background: #111;
+  }
+  .cc, span{
+    display: inline-block;
+    color: white;
+  }
+  .footer{
+    font-size: 23px;
+    font-family: 'Roboto';
+    display: grid;
+    position: relative;
+    grid-template-columns: repeat(2,1fr);
+  }
+  .contact{
+    position: absolute;
+    top: 70px;
+    left: 25px;
+    transition: 0.7s;
+  }
+  .correo{
+    position: absolute;
+    top: 70px;
+    right: 25px;
+    transition: 2s;
+  }
+  @media only screen and (max-width: 1080px){
+    .contact{
+      top: 40px;
+      left: 25px;
+    }
+    .correo{
+      top: 100px;
+      left: 25px;
+    }
+    .footer{
+      font-size: 23px;
+      grid-template-columns: repeat(1,1fr);
+    }
+  }
+  
+  h3{
+    width: 100%;
+    text-align: center;
+    display: block;
+    font-family: 'Roboto';
+    position: absolute;
+    font-size: 2vw;
+    color: #111;
+    top: 460px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    transition: 0.9s;
+    margin: auto;
+  }
+  h3:hover{
+    top: 450px;
+  }

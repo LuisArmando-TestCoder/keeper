@@ -1,0 +1,15 @@
+.options {
+  position: sticky;
+  top: 0;
+  background: $gray;
+  width: 100%;
+  height: 20vh;
+  display: grid;
+  border-top: $bdSize solid $black;
+  outline: none;
+  #currentCard {
+    outline: none;
+    @include card;
+  }
+}
+

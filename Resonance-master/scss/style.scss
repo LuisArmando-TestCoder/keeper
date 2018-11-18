@@ -1,0 +1,180 @@
+/*Creado por LuisArmando-TestCoder*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+$letters-color-1: #fff;
+$bg-color: #dad4c4;
+$font-1: 'Audiowide';
+$buildings-color-1: #b05d5b;
+$buildings-color-2: #ca6e87;
+$buildings-color-3: #a36282;
+*{
+  user-select: none;
+}
+body{
+  overflow: hidden;
+}
+.bg{
+  height: 100vh;
+  position: relative;
+  background: $bg-color;
+  
+}
+.sun{
+  width: 50vh;
+  height: 50vh;
+  border-radius: 50%;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 5vh;
+  margin: auto;
+  overflow: hidden;
+  &:after{
+    content: "";
+    display: block;
+    height: 20%;
+    background: #cc6e50;
+    box-shadow: 0 5vh 0 #cd6b60,
+                0 10vh 0 #b05d5b,
+                0 15vh 0 #ca6e87,
+                0 20vh 0 #a36282,
+                0 25vh 0 #a17198,
+                0 30vh 0 #767390,
+                0 40vh 0 1vh #334559;
+  }
+}
+.buildings{
+  height: 19vh;
+  width: 2vh;
+  position: fixed;
+  margin: auto;
+  bottom: 30vh;
+  left: 50vw;
+  background: $buildings-color-1;  
+  &:after{
+    content: '';
+    display: block;
+    height: 10vh;
+    width: 100vw;
+    position: fixed;
+    margin: auto;
+    bottom: 30vh;
+    left: 0;
+    background: $buildings-color-1; 
+  }
+}
+.buildingsB{
+  height: 22vh;
+  width: 20vh;
+  position: fixed;
+  margin: auto;
+  bottom: 26vh;
+  left: 70vw;
+  background: $buildings-color-2;
+  &:after{
+    content: '';
+    display: block;
+    height: 21vh;
+    width: 100vw;
+    position: fixed;
+    margin: auto;
+    bottom: 10vh;
+    left: 0;
+    background: $buildings-color-2; 
+  }
+}
+.buildingsC{
+  height: 43vh;
+  width: 27vh;
+  position: fixed;
+  margin: auto;
+  bottom: 0vh;
+  left: 40vw;
+  background: $buildings-color-3;
+  &:after{
+    content: '';
+    display: block;
+    height: 10vh;
+    width: 100vw;
+    position: fixed;
+    margin: auto;
+    bottom: 0vh;
+    left: 0;
+    background: $buildings-color-3; 
+  }
+}
+.cat{
+  position: fixed;
+  bottom: 0;
+  left: 0px;
+  height: 50px;
+  width: 20px;
+  background-image: url('https://opengameart.org/sites/default/files/sprite_base_addon_2012_12_14_1.png');
+}
+
+.stand{
+  animation: stand 0.8s step-end infinite;
+}
+
+/* keyframes */
+$animations-names: 'stand', 'walk', 'jump', 'spin', 'dead', 'powerShot', 'fastShot', 'flyingKick', 'superUppercut', 'oneTwoCombo', 'lowKick', 'highKick', 'downwardKick', 'twoSideAttack', 'roundKick', 'uppercut';
+$y-value-distance: 4px;
+$amount-and-steps: 4, 8, 8, 10, 7, 7, 6, 8, 13, 10, 6, 6, 8, 8, 8, 6;
+
+@for $i from 1 through 16{
+  @keyframes #{nth($animations-names, $i)}{
+    $value: 0%;
+    $x-value-distance: -20px;
+    @for $i2 from 1 through nth($amount-and-steps, $i){
+      #{$value}{
+        background-position: $x-value-distance $y-value-distance*-1;
+      }
+      $x-value-distance: $x-value-distance + -64;
+      $value: $value + 100/nth($amount-and-steps, $i);
+    }
+    $y-value-distance: $y-value-distance + 64;
+  }
+}
+//output
