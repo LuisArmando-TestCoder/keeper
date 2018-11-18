@@ -1,0 +1,40 @@
+#wrapper2{
+  .ovals{
+    .shape{
+      width: 45%;
+      height: 10%;
+      border: double $white;
+      border-width: 0 1vw 0 1vw;
+      border-radius: 50%;
+      transform: rotate($degAmount*0.45*-1);
+      position: relative;
+      top: 0vw;
+      animation: spin 35s linear infinite;
+      //black
+    }
+    mix-blend-mode: difference;
+    box-shadow: 0 $sizevw*0.25 $white,
+                0 $sizevw*0.25*-1 $white;
+    display: grid;
+    place-items: center;
+    position: absolute;
+    width: $sizevw*0.48;
+    height: $sizevh*0.58;
+    border: $sizevw*0.005 double #7bffff;
+    border-radius: 50%;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    animation: spin2 200s ease-in-out infinite;
+    //black
+  }
+  min-height: $sizevh;
+  width: $sizevw;
+  position: relative;
+  background: $white;
+  transform: rotateY(180deg);
+  //white
+} 
+  
