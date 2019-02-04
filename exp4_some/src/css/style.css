@@ -5,11 +5,11 @@
 
 @font-face {
   font-family: "AvenirNext";
-  src: url("../../fonts/AvenirNext_Variable.ttf");
+  src: url("../fonts/AvenirNext_Variable.ttf");
 }
 @font-face {
   font-family: "KairosSans";
-  src: url("../../fonts/KairosSans_Variable.ttf");
+  src: url("../fonts/KairosSans_Variable.ttf");
 }
 header h1 {
   font-family: "KairosSans";
@@ -19,7 +19,7 @@ header h1 {
 header h1 span {
   display: block;
   font-family: "AvenirNext" !important;
-  font-variation-settings: "wght" var(--weig), "wdth" 400;
+  font-variation-settings: "wght" var(--weightInverted), "wdth" 400;
   font-size: 100px;
 }
 
