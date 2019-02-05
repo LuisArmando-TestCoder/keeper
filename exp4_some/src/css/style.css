@@ -1,0 +1,26 @@
+:root {
+  --weight: 200;
+  --weightInverted: 900;
+}
+
+@font-face {
+  font-family: "AvenirNext";
+  src: url("../fonts/AvenirNext_Variable.ttf");
+}
+@font-face {
+  font-family: "KairosSans";
+  src: url("../fonts/KairosSans_Variable.ttf");
+}
+header h1 {
+  font-family: "KairosSans";
+  font-variation-settings: "wght" var(--weight), "wdth" 400;
+  font-size: 140px;
+}
+header h1 span {
+  display: block;
+  font-family: "AvenirNext" !important;
+  font-variation-settings: "wght" var(--weightInverted), "wdth" 400;
+  font-size: 100px;
+}
+
+/*# sourceMappingURL=style.css.map */
