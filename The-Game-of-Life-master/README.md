@@ -1,7 +1,7 @@
 # THE GAME OF LIFE
 ## of Jhon Conway
 
-Look at the [Github page](https://luisarmando-testcoder.github.io/The-Game-of-Life/)
+Look at the [Github page](https://luisarmando-testcoder.github.io/keeper/The-Game-of-Life-master/index.html)
 
 ### Fundamental Rules 
 
