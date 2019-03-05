@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Document</title>
+  <link href="https://fonts.googleapis.com/css?family=ZCOOL+QingKe+HuangYou" rel="stylesheet" />
+  <style>
+    body {
+      transform: scale(0.4, 0.3);
+      background: #000;
+      margin: 0;
+      overflow: hidden;
+      display: grid;
+      place-items: center;
+      transform-style: preserve-3d;
+      perspective: 50vw;
+    }
+
+    .comeHereAnimation span {
+      position: relative;
+      opacity: 0;
+      animation: comeOverHere 0.5s step-end forwards;
+    }
+
+    #passengerText {
+      color: #000;
+      text-align: center;
+      font-family: sans-serif;
+      position: fixed;
+      z-index: 1;
+      text-align: center;
+      display: grid !important;
+      place-items: center;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      margin: auto;
+      font-family: "ZCOOL QingKe HuangYou", cursive;
+      transform: rotateX(35deg);
+    }
+
+    #passengerText h2 {
+      font-size: 7vw;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      display: grid;
+      place-content: center;
+      grid-template-columns: repeat(9, 1fr);
+      margin: auto;
+      position: absolute;
+      animation: fadeOut 3.75s ease-out forwards;
+      animation-delay: 4s;
+    }
+
+    #passengerText p {
+      font-size: 5vw;
+      font-variation-settings: "wght"600;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      position: absolute;
+      animation: textFromBottom calc(15s * 2) linear forwards;
+      line-height: 3;
+      letter-spacing: 5vw;
+    }
+
+    #finalText {
+      color: #fff;
+      text-align: center;
+      font-family: sans-serif;
+      position: fixed;
+      z-index: 1;
+      text-align: center;
+      display: grid !important;
+      place-items: center;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      margin: auto;
+      font-family: "ZCOOL QingKe HuangYou", cursive;
+      transform: rotateX(35deg);
+      animation: lookUp 3s forwards;
+      animation-delay: 20s;
+    }
+
+    #finalText h2 {
+      font-size: 7vw;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      display: grid;
+      place-content: center;
+      grid-template-columns: repeat(10, 1fr);
+      margin: auto;
+      position: absolute;
+    }
+
+    #finalText h2:after {
+      content: ".";
+      white-space: pre;
+      animation-delay: 18s;
+      animation: shine 1s ease-in-out infinite;
+    }
+
+    @keyframes shine {
+      50% {
+        content: " ";
+      }
+    }
+
+    @keyframes lookUp {
+      to {
+        transform: rotateX(0deg);
+      }
+    }
+
+    @keyframes comeOverHere {
+      to {
+        opacity: 1;
+        right: 0;
+        bottom: 0;
+      }
+    }
+
+    @keyframes textFromBottom {
+      from {
+        top: calc(100vh + 200px);
+      }
+
+      to {
+        top: calc(-100vh - 400px);
+      }
+    }
+
+    @keyframes textFromMiddle {
+      to {
+        top: calc(-100vh - 200px);
+      }
+    }
+
+    @keyframes fadeOut {
+      to {
+        opacity: 0;
+      }
+    }
+
+    /*# sourceMappingURL=style.css.map */
+  </style>
+</head>
+
+<body>
+
+  <div id="skyWrapper"></div>
+
+  <div id="passengerText">
+    <h2>Test_Star</h2>
+    <p>
+      Con su voz la estrella me alcanza
+    </p>
+  </div>
+  <div id="finalText">
+    <h2>Bonjour---TestCoder</h2>
+  </div>
+
+  <script>
+    (function () {
+      function quicker() {
+        function makeFloatingRandom(min, max) {
+          return Math.random() * (max + 1 - min) + min;
+        }
+
+        function canvasManageSize(canvas) {
+          const c = canvas;
+          function setSize() {
+            c.width = window.innerWidth;
+            c.height = window.innerHeight;
+          }
+          setSize();
+          window.addEventListener("resize", setSize);
+        }
+        return {
+          canvasManageSize: canvasManageSize,
+          makeFloatingRandom: makeFloatingRandom
+        };
+      }
+      const q = quicker();
+      const cnv = document.createElement("canvas");
+      cnv.id = "starsField";
+      const ctx = cnv.getContext("2d");
+      const skyWrapper = document.getElementById("skyWrapper");
+      const passengerText = document.getElementById("passengerText");
+      const finalText = document.getElementById("finalText");
+
+      let storyState = 0;
+      let starsArray = [];
+
+      function createStar(arr) {
+        let v = q.makeFloatingRandom(1.5, 2.25);
+        arr.push({
+          x: q.makeFloatingRandom(0, cnv.width),
+          y: q.makeFloatingRandom(0, cnv.height),
+          r: v,
+          v: v / 2
+        });
+      }
+      function drawStars(arr) {
+        ctx.beginPath();
+
+        if (storyState < 2) {
+          ctx.fillStyle = "#ffffff33";
+        } else {
+          ctx.fillStyle = reduceColor();
+        }
+
+        ctx.fillRect(0, 0, cnv.width, cnv.height);
+        ctx.fill();
+        arr.forEach(star => {
+          ctx.beginPath();
+          ctx.arc(star.x, star.y, star.r, 0, 2 * Math.PI);
+          ctx.fillStyle = "#000";
+          ctx.fill();
+          updateStar(star);
+        });
+      }
+      function updateStar(star) {
+        star.x += star.v * 2;
+        if (star.x - star.r > cnv.width) {
+          star.x = -star.r;
+          star.y = q.makeFloatingRandom(0, cnv.height);
+        }
+        if (storyState === 1) increaseGooey(starsArray).effect();
+      }
+      function increaseGooey(arr) {
+        cnv.style.setProperty("filter", "blur(15px) contrast(30)");
+        return {
+          effect: function () {
+            arr.forEach(star => {
+              if (star.r < 3000) star.r += 0.01;
+            });
+          }
+        };
+      }
+      function writeInnerText(elem) {
+        function later() {
+          elem.style.display = "none";
+        }
+        function now() {
+          elem.style.display = "";
+          let newText = "";
+          let letterIndex = 0;
+          const elemLength = elem.innerText.length;
+
+          for (let i = 0; i < elemLength; i++) {
+            newText += `<span
+      style="display: none;">
+      ${elem.innerText[i]}
+      </span>`;
+          }
+          elem.innerHTML = newText;
+          const writeInterval = setInterval(() => {
+            if (letterIndex > elemLength - 1) {
+              return clearInterval(writeInterval);
+            }
+            elem.querySelectorAll("span")[letterIndex].style.display =
+              "inline-block";
+            letterIndex++;
+          }, 200);
+        }
+        return {
+          later: later,
+          now: now
+        };
+      }
+      function undoWriteInnerText(elem) {
+        function now() {
+          const elemLength = elem.querySelectorAll("span").length;
+          let letterIndex = elemLength - 1;
+          console.log(elemLength);
+          const writeInterval = setInterval(() => {
+            if (letterIndex < 0) {
+              return clearInterval(writeInterval);
+            }
+            elem.querySelectorAll("span")[letterIndex].style.display = "none";
+            letterIndex--;
+          }, 200);
+        }
+        return {
+          now: now
+        };
+      }
+      function animate() {
+        drawStars(starsArray);
+        requestAnimationFrame(animate);
+      }
+      function reduceThe(r, g, b, a = 1) {
+        powerN = 1;
+        function color() {
+          if (r >= 0) {
+            powerN -= 0.001; // my version of power of N
+            r -= powerN; // same transition style
+            g -= powerN;
+            b -= powerN;
+            return `rgba(${r},${g},${b},${a})`;
+          }
+        }
+        return {
+          color: color
+        };
+      }
+
+      const reduceColor = reduceThe(200, 200, 200, 0.2).color;
+
+      q.canvasManageSize(cnv);
+
+      for (let i = 0; i < 133; i++) createStar(starsArray);
+
+      writeInnerText(passengerText.querySelector("h2")).later();
+      writeInnerText(finalText.querySelector("h2")).later();
+      skyWrapper.appendChild(cnv);
+      animate();
+
+      setTimeout(writeInnerText(passengerText.querySelector("h2")).now, 2000);
+      setTimeout(() => (storyState += 1), 14000);
+      setTimeout(() => {
+        storyState += 1;
+        cnv.style.setProperty("filter", "");
+      }, 16000);
+      setTimeout(writeInnerText(finalText.querySelector("h2")).now, 18000);
+      setTimeout(undoWriteInnerText(finalText.querySelector("h2")).now, 24000);
+    }());
+  </script>
+</body>
+
+</html>
